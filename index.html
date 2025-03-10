@@ -124,41 +124,37 @@
             <div class="menu">
                 <h2 class="menu-title"><i class="fa fa-file-alt"></i> Form Request Pengiriman</h2>
                 <p class="menu-description">Silahkan isi form sesuai kebutuhan anda.</p>
-                <a href="form.html" target="_blank">
-                    <button class="menu-button">KLIK DISINI</button>
-                </a>
+                <button class="menu-button" onclick="redirect('form.html')">KLIK DISINI</button>
             </div>
             <div class="menu">
                 <h2 class="menu-title"><i class="fa fa-comments"></i> Feedback Request Pengiriman</h2>
                 <p class="menu-description">Cek hasil request anda untuk memastikan statusnya.</p>
-                <a href="feedback.html" target="_blank">
-                    <button class="menu-button">KLIK DISINI</button>
-                </a>
+                <button class="menu-button" onclick="redirect('feedback.html')">KLIK DISINI</button>
             </div>
             <div class="menu">
                 <h2 class="menu-title"><i class="fa fa-map-marker-alt"></i> Tracking RT</h2>
                 <p class="menu-description">Lacak status RT anda dengan mudah.</p>
-                <a href="trackingrt.html" target="_blank">
-                    <button class="menu-button">KLIK DISINI</button>
-                </a>
+                <button class="menu-button" onclick="redirect('trackingrt.html')">KLIK DISINI</button>
             </div>
         </div>
         <div class="menu-container-bottom">
             <div class="menu">
                 <h2 class="menu-title"><i class="fa fa-user-tie"></i> Daftar PIC</h2>
                 <p class="menu-description">Cek disini untuk melihat siapa yang sedang bertugas.</p>
-                <a href="pic.html" target="_blank">
-                    <button class="menu-button">KLIK DISINI</button>
-                </a>
+                <button class="menu-button" onclick="redirect('pic.html')">KLIK DISINI</button>
             </div>
             <div class="menu">
                 <h2 class="menu-title"><i class="fa fa-question-circle"></i> QNA</h2>
                 <p class="menu-description">Punya pertanyaan? Temukan jawabannya di sini.</p>
-                <a href="qna.html" target="_blank">
-                    <button class="menu-button">KLIK DISINI</button>
-                </a>
+                <button class="menu-button" onclick="redirect('qna.html')">KLIK DISINI</button>
             </div>
         </div>
     </div>
+
+    <script>
+        function redirect(url) {
+            window.location.href = url; // Mengarahkan halaman ke URL yang diklik
+        }
+    </script>
 </body>
 </html>
