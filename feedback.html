@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Request Pengiriman</title>
+    <title>Luxury Dashboard - Black & Gold Theme</title>
     <style>
         /* Gaya Umum */
         body {
@@ -47,10 +47,30 @@
         /* Styling iframe */
         iframe {
             width: 98%;
-            height: 85%;
+            height: 80%;
             border: 2px solid rgba(255, 215, 0, 0.5);
             border-radius: 10px;
             box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Tombol Home */
+        .home-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            background-color: #FFD700;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0px 3px 10px rgba(255, 215, 0, 0.5);
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .home-button:hover {
+            background-color: #e6c300;
+            transform: scale(1.05);
         }
     </style>
 </head>
@@ -61,6 +81,7 @@
             allowfullscreen 
             sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
         </iframe>
+        <button class="home-button" onclick="window.location.href='index.html'">🏠 Home</button>
     </div>
 </body>
 </html>
