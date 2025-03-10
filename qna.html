@@ -3,62 +3,319 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard Looker Studio</title>
+    <title>Q&A Interaktif Chatbot</title>
+    <!-- Menambahkan Font Awesome untuk ikon -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <style>
-        /* Gaya Umum */
+        /* General Body Styles */
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            overflow: hidden;
+            color: #FFD700;
             height: 100vh;
-            background: linear-gradient(135deg, #1f3c88, #4a90e2);
-            color: white;
-            text-align: center;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            animation: gradientBackground 10s ease infinite;
+            background-size: 400% 400%;
         }
 
-        /* Container utama */
+        /* Animation for background gradient */
+        @keyframes gradientBackground {
+           0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
         .container {
-            width: 80%;
-            max-width: 1400px;
-            height: 90vh;
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(12px);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0px 6px 20px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            height: 100%;
             display: flex;
             flex-direction: column;
+            justify-content: center;
             align-items: center;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
-        /* Judul */
         h2 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            font-weight: 600;
-            color: #ffffff;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+          color: #FFD700;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            animation: textGlow 1.5s infinite alternate;
         }
 
-        /* Styling iframe */
-        iframe {
-            width: 98%;
-            height: 85%;
-            border: none;
+        /* Glowing effect for the title */
+        @keyframes textGlow {
+         0% {
+                text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #B8860B;
+            }
+            100% {
+                text-shadow: 0 0 20px #FFD700, 0 0 30px #FFD700, 0 0 40px #B8860B;
+            }
+        }
+
+        .qna-form {
+        background-color: rgba(255, 215, 0, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        input[type="text"] {
+          width: 100%;
+            padding: 12px;
+            font-size: 16px;
             border-radius: 10px;
+            border: 1px solid #FFD700;
+            background-color: rgba(255, 215, 0, 0.2);
+            color: #FFD700;
+            transition: 0.3s ease;
+        }
+
+        input[type="text"]:focus {
+           outline: none;
+            border: 1px solid #B8860B;
+        }
+
+        button {
+           width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            background-color: #FFD700;
+            color: black;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        button:hover {
+            background-color: #6a11cb;
+            transform: scale(1.05);
+        }
+
+        button:active {
+            background-color: #4e8dd2;
+            transform: scale(0.98);
+        }
+
+        .answer-container {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            margin-top: 20px;
+            display: none; /* Initially hidden */
+            animation: slideUp 1s ease;
+        }
+
+        /* Slide-up effect for answer container */
+        @keyframes slideUp {
+            0% {
+                transform: translateY(50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .answer-container .icon {
+            font-size: 2rem;
+            margin-right: 15px;
+        }
+
+        .answer-container .answer-text {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 1.2rem;
+        }
+
+        /* Mobile responsiveness */
+        @media screen and (max-width: 600px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .qna-form {
+                width: 90%;
+                margin-bottom: 10px;
+            }
+
+            .answer-container {
+                width: 90%;
+            }
+
+            input[type="text"] {
+                padding: 10px;
+                font-size: 14px;
+            }
+
+            button {
+                font-size: 14px;
+                padding: 10px;
+            }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h2>📊 Dashboard Looker Studio</h2>
-        <iframe src="https://lookerstudio.google.com/embed/reporting/eee1f494-7481-4714-93b8-4884f02870cc/page/p_1ekfp4bdqd" 
-            allowfullscreen 
-            sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox">
-        </iframe>
+        <div class="qna-form">
+            <h2>Ajukan Pertanyaan</h2>
+            <div class="form-group">
+                <input type="text" id="userQuestion" placeholder="Masukkan pertanyaan Anda..." />
+            </div>
+            <div class="form-group">
+                <button id="askButton">Tanyakan</button>
+            </div>
+        </div>
+
+        <div class="answer-container" id="answerContainer">
+            <div class="icon" id="answerIcon"></div>
+            <div class="answer-text" id="answerText">Menunggu pertanyaan...</div>
+        </div>
     </div>
+
+    <script>
+        // List of bad words (for demonstration purposes)
+        const badWords = [
+            'anjing', 'babi', 'kontol', 'perek', 'goblok', 'bodoh', 'sialan', 
+            'bajingan', 'kampret', 'cilaka', 'setan', 'bangsat', 'tai', 'asu', 'bodoh', 
+            'kotor', 'monyet', 'rasis', 'sundal', 'sial', 'kematian', 'perusak', 
+            'berengsek', 'ngentot', 'cewek murahan', 'cowok murahan', 'cocok', 'pelacur',
+            'kontol', 'goblokan', 'bangsat', 'pepek', 'bacot', 'tai kucing', 'monyet',
+            'bodoh amat', 'goblok banget', 'gila lu', 'bodo amat'
+        ];
+
+        // Handle pressing 'Enter' to send message
+        document.getElementById('userQuestion').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendQuestion();
+            }
+        });
+
+        // Mengaktifkan form tanya jawab
+        document.getElementById('askButton').addEventListener('click', function() {
+            sendQuestion();
+        });
+
+        // Fungsi untuk memeriksa apakah input berisi kata-kata kasar
+        function containsBadWords(inputText) {
+            const lowerCaseInput = inputText.toLowerCase();
+            return badWords.some(badWord => lowerCaseInput.includes(badWord));
+        }
+
+        // Fungsi untuk mengirim pertanyaan dan mendapatkan jawaban
+        function sendQuestion() {
+            const userQuestion = document.getElementById('userQuestion').value.trim();
+            const answerContainer = document.getElementById('answerContainer');
+            const answerText = document.getElementById('answerText');
+            const answerIcon = document.getElementById('answerIcon');
+
+            if (containsBadWords(userQuestion)) {
+                answerText.textContent = "Astagfirullah, itu mulut ga pernah disekolahin apa ya?";
+                answerIcon.className = "fas fa-angry"; // Icon marah
+                answerContainer.style.display = "block";
+            } else {
+                const lowerCaseMessage = userQuestion.toLowerCase();
+
+                if (lowerCaseMessage.includes('halo') || lowerCaseMessage.includes('hallo') || lowerCaseMessage.includes('hai') || lowerCaseMessage.includes('tes')) {
+                    answerText.textContent = 'Haloo juga senang membantu anda';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('terimakasih') || lowerCaseMessage.includes('makasih') || lowerCaseMessage.includes('thanks') || lowerCaseMessage.includes('mksh') || lowerCaseMessage.includes('makasi')) {
+                    answerText.textContent = 'Sama-sama, senang membantu anda';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('rt')) {
+                    answerText.textContent = 'Baik untuk RT yang anda tanyakan silahkan cek di menu feedback ya, atau jika ingin tahu RT yang anda tanya sewa atau direct langsung bisa cek di tracking RT';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('order')) {
+                    answerText.textContent = 'Baik untuk order yang anda tanyakan silahkan cek di menu feedback';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('pic') || lowerCaseMessage.includes('tugas') || lowerCaseMessage.includes('on duty')) {
+                    answerText.textContent = 'Untuk cek siapa yang sedang bertugas hari ini, bisa anda cek di daftar PIC yang bertugas ya';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('sudah terjalur') || lowerCaseMessage.includes('belum') || lowerCaseMessage.includes('kapan') || lowerCaseMessage.includes('berapa lama')) {
+                    answerText.textContent = 'Untuk mengecek apakah order anda sudah terjalur atau belum, silahkan cek di menu feedback ya';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('form')) {
+                    answerText.textContent = 'Jika anda sudah mengisi form maka harap cek secara berkala di menu feedback ya';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('tidak') || lowerCaseMessage.includes('sudah') || lowerCaseMessage.includes('cukup')) {
+                    answerText.textContent = 'Baik, jika sudah tidak ada yang ditanyakan, admin izin pamit dan jangan sungkan untuk bertanya kembali 😊';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } 
+                // Additional response cases
+                else if (lowerCaseMessage.includes('lama') || lowerCaseMessage.includes('lama amat')) {
+                    answerText.textContent = 'Sabar ya guys, kita juga manusia bukan nabi boy';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('kapan') || lowerCaseMessage.includes('berapa lama')) {
+                    answerText.textContent = 'Silahkan dicek terus guys siapa tahu sekarang sudah terjalur';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('maaf') || lowerCaseMessage.includes('sorry') || lowerCaseMessage.includes('sory') || lowerCaseMessage.includes('yaudh sih')) {
+                    answerText.textContent = 'Haha yaudah saya maafin, mamanya juga manusia tempat salah dan lupa';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('pantun')) {
+                    const pantunResponses = [
+                        'Burung terbang di langit biru, / Manusia hidup penuh cinta, / Apakah kau tahu? / Senyumanmu membuatku terpana.',
+                        'Pagi hari sungguh cerah, / Burung berkicau di atas pohon, / Bila hati terasa gundah, / Cobalah untuk terus tersenyum!',
+                        'Sambil berjalan di tepi pantai, / Angin sepoi-sepoi menyapa, / Jangan sedih jangan galau, / Hidup ini indah jika kau berbahagia.'
+                    ];
+                    answerText.textContent = pantunResponses[Math.floor(Math.random() * pantunResponses.length)];
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                } else if (lowerCaseMessage.includes('gombal')) {
+                    const gombalResponses = [
+                        'Kalau aku jadi matahari, / Kau jadi langit biru yang menyinari setiap langkahku.',
+                        'Jika aku jadi hujan, / Aku akan datang hanya untuk menyentuh hatimu.',
+                        'Bagaikan bintang yang berkilau di langit, kau adalah yang terindah dalam hidupku.'
+                    ];
+                    answerText.textContent = gombalResponses[Math.floor(Math.random() * gombalResponses.length)];
+                    answerIcon.className = "fas fa-heart"; // Icon cinta
+                } else if (lowerCaseMessage.includes('sedih') || lowerCaseMessage.includes('galau') || lowerCaseMessage.includes('badmood') || lowerCaseMessage.includes('bete')) {
+                    const sadQuotes = [
+                        'Kadang kamu harus merasakan kesedihan untuk bisa mengerti betapa berharganya kebahagiaan.',
+                        'Hidup ini penuh cobaan, tapi ingat, setelah hujan pasti ada pelangi.',
+                        'Jangan biarkan satu hari buruk merusak hari-hari baik yang akan datang.'
+                    ];
+                    answerText.textContent = sadQuotes[Math.floor(Math.random() * sadQuotes.length)];
+                    answerIcon.className = "fas fa-heart"; // Icon hati
+                } else {
+                    answerText.textContent = 'Maaf, saya tidak dapat memahami pertanyaan Anda. Bisa coba ketikkan pertanyaan lain? Kami siap membantu! 😊';
+                    answerIcon.className = "fas fa-smile"; // Icon senyum
+                }
+
+                answerContainer.style.display = "block";
+            }
+
+            // Kosongkan input field setelah pertanyaan
+            document.getElementById('userQuestion').value = '';
+
+            // Memastikan animasi muncul setiap kali jawaban diberikan
+            answerContainer.style.animation = 'none';  // Menghapus animasi yang ada
+            answerContainer.offsetHeight; // Trik untuk mereset animasi
+            answerContainer.style.animation = 'slideUp 1s ease';  // Menambahkan kembali animasi
+        }
+    </script>
+
 </body>
 </html>
