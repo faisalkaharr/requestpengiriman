@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Interaktif - Profesional & Elegan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        /* Font dan Background */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #212121, #424242);
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            color: #e0e0e0;
+        }
+
+        /* Header */
+        .header-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-top: 40px;
+            color: #ffb300;
+            text-shadow: 0 0 10px rgba(255, 179, 0, 0.3);
+            letter-spacing: 1.5px;
+        }
+
+        /* Kontainer Menu */
+        .menu-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-content: center;
+            max-width: 1000px;
+            margin-bottom: 30px;
+        }
+
+        .menu-container-bottom {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* Desain Menu */
+        .menu {
+            background: rgba(33, 33, 33, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 16px rgba(255, 179, 0, 0.3);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+        }
+
+        .menu:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.5);
+        }
+
+        .menu-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #ffb300;
+            font-weight: bold;
+        }
+
+        .menu-title i {
+            font-size: 26px;
+        }
+
+        .menu-description {
+            font-size: 16px;
+            color: #bdbdbd;
+            margin-bottom: 20px;
+        }
+
+        .menu-button {
+            background: #ffb300;
+            color: #212121;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .menu-button:hover {
+            background: #d4af37;
+            transform: scale(1.08);
+        }
+
+        /* Responsif */
+        @media (max-width: 768px) {
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+            .menu-container-bottom {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h2 class="header-title">📘 PILIH MENU YANG ANDA BUTUHKAN 📘</h2>
+    <div class="menu-wrapper">
+        <div class="menu-container">
+            <div class="menu">
+                <h2 class="menu-title"><i class="fa fa-file-alt"></i> Form Request Pengiriman</h2>
+                <p class="menu-description">Silahkan isi form sesuai kebutuhan anda.</p>
+                <a href="form.html" target="_blank">
+                    <button class="menu-button">KLIK DISINI</button>
+                </a>
+            </div>
+            <div class="menu">
+                <h2 class="menu-title"><i class="fa fa-comments"></i> Feedback Request Pengiriman</h2>
+                <p class="menu-description">Cek hasil request anda untuk memastikan statusnya.</p>
+                <a href="feedback.html" target="_blank">
+                    <button class="menu-button">KLIK DISINI</button>
+                </a>
+            </div>
+            <div class="menu">
+                <h2 class="menu-title"><i class="fa fa-map-marker-alt"></i> Tracking RT</h2>
+                <p class="menu-description">Lacak status RT anda dengan mudah.</p>
+                <a href="trackingrt.html" target="_blank">
+                    <button class="menu-button">KLIK DISINI</button>
+                </a>
+            </div>
+        </div>
+        <div class="menu-container-bottom">
+            <div class="menu">
+                <h2 class="menu-title"><i class="fa fa-user-tie"></i> Daftar PIC</h2>
+                <p class="menu-description">Cek disini untuk melihat siapa yang sedang bertugas.</p>
+                <a href="pic.html" target="_blank">
+                    <button class="menu-button">KLIK DISINI</button>
+                </a>
+            </div>
+            <div class="menu">
+                <h2 class="menu-title"><i class="fa fa-question-circle"></i> QNA</h2>
+                <p class="menu-description">Punya pertanyaan? Temukan jawabannya di sini.</p>
+                <a href="qna.html" target="_blank">
+                    <button class="menu-button">KLIK DISINI</button>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
