@@ -3,55 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black & Gold Luxury Form</title>
+    <title>Form Request Pengiriman</title>
     <style>
+        /* Gaya Umum */
         body {
-            background-color: #000;
-            color: #FFD700;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-        }
-        .container {
-            width: 100vw;
-            height: 100vh;
-            border: 5px solid #FFD700;
-            border-radius: 15px;
-            background: linear-gradient(135deg, #111 40%, #333 100%);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
+            padding: 0;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px;
+            height: 100vh;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            color: white;
             text-align: center;
         }
+
+        /* Container utama */
+        .container {
+            width: 80%;
+            max-width: 1200px;
+            height: 90vh;
+            background: rgba(255, 215, 0, 0.1);
+            backdrop-filter: blur(15px);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0px 6px 25px rgba(255, 215, 0, 0.5);
+            border: 2px solid rgba(255, 215, 0, 0.8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Judul */
         h2 {
-            margin-bottom: 20px;
+            font-size: 30px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #FFD700;
+            text-shadow: 2px 2px 8px rgba(255, 215, 0, 0.8);
         }
-        .iframe-wrapper {
-            width: 100%;
-            height: 80vh;
+
+        /* Styling iframe */
+        iframe {
+            width: 98%;
+            height: 85%;
+            border: 2px solid rgba(255, 215, 0, 0.5);
             border-radius: 10px;
-        }
-        .iframe-wrapper iframe {
-            width: 100%;
-            height: 100%;
-            border: 0;
-            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(255, 215, 0, 0.3);
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h2>Isi Formulir</h2>
-        <div class="iframe-wrapper">
-            <iframe src="https://formfacade.com/headless/103538950695046364359/home/form/1FAIpQLSf_lv7JwqVAQluvBn1q3H6waNVfwWnK5AziS3X3p3nO34vzug"></iframe>
-        </div>
+        <h2>✨ Luxury Form ✨</h2>
+        <iframe src="https://formfacade.com/headless/103538950695046364359/home/form/1FAIpQLSf_lv7JwqVAQluvBn1q3H6waNVfwWnK5AziS3X3p3nO34vzug" 
+            allowfullscreen>
+        </iframe>
     </div>
 </body>
 </html>
-
