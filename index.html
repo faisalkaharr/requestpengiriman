@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Interaktif - Profesional & Elegan</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         /* Font dan Background */
         body {
@@ -36,7 +39,7 @@
 
         .menu-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr); /* 3 kolom */
             gap: 30px;
             justify-content: center;
             max-width: 1000px;
@@ -44,10 +47,11 @@
         }
 
         .menu-container-bottom {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 kolom */
             gap: 30px;
-            max-width: 700px;
+            justify-content: center;
+            max-width: 1000px;
             width: 100%;
         }
 
@@ -107,18 +111,14 @@
 
         /* Responsif */
         @media (max-width: 768px) {
-            .menu-container {
+            .menu-container, .menu-container-bottom {
                 grid-template-columns: 1fr;
-            }
-            .menu-container-bottom {
-                flex-direction: column;
-                align-items: center;
             }
         }
     </style>
 </head>
 <body>
-    <h2 class="header-title">📘 PILIH MENU YANG ANDA BUTUHKAN 📘</h2>
+    <h2 class="header-title"> PILIH MENU YANG ANDA BUTUHKAN </h2>
     <div class="menu-wrapper">
         <div class="menu-container">
             <div class="menu">
@@ -139,6 +139,11 @@
         </div>
         <div class="menu-container-bottom">
             <div class="menu">
+                <h2 class="menu-title"><i class="fa fa-clipboard-check"></i> Makesure DO Project</h2>
+                <p class="menu-description">Bantu kami makesure do project h-1 apakah bisa diterima atau mundur jalur.</p>
+                <button class="menu-button" onclick="redirect('https://script.google.com/macros/s/AKfycbwHxEJ-J67SrAH0joecg-ib01Y6cLG4-vt16NfieiDtJRIcF4KtHgpmUG2IOKOfTo29/exec')">KLIK DISINI</button>
+            </div>
+            <div class="menu">
                 <h2 class="menu-title"><i class="fa fa-user-tie"></i> Daftar PIC</h2>
                 <p class="menu-description">Cek disini untuk melihat siapa yang sedang bertugas.</p>
                 <button class="menu-button" onclick="redirect('pic.html')">KLIK DISINI</button>
@@ -153,7 +158,7 @@
 
     <script>
         function redirect(url) {
-            window.location.href = url; // Mengarahkan halaman ke URL yang diklik
+            window.location.href = url;
         }
     </script>
 </body>
