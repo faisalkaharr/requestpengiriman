@@ -3,163 +3,404 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu Interaktif - Profesional & Elegan</title>
+    <title>Request Pengiriman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Font dan Background */
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #212121, #424242);
-            text-align: center;
+        /* Reset CSS untuk konsistensi */
+        body, h1, h2, p, ul, li, a, button {
             margin: 0;
             padding: 0;
-            color: #e0e0e0;
+            border: 0;
+            font-size: 100%;
+            font: inherit;
+            vertical-align: baseline;
+            box-sizing: border-box;
         }
 
-        /* Header */
-        .header-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-top: 40px;
-            color: #ffb300;
-            text-shadow: 0 0 10px rgba(255, 179, 0, 0.3);
-            letter-spacing: 1.5px;
-        }
-
-        /* Kontainer Menu */
-        .menu-wrapper {
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #ECEFF1, #F5F5F5); /* Gradien Latar Belakang */
+            color: #212121; /* Teks Sekunder sebagai default */
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 20px;
+            padding-top: 40px; /* Kurangi padding atas agar judul lebih ke tengah vertikal */
+            padding-bottom: 40px; /* Tambahkan padding bawah untuk footer */
+            box-sizing: border-box; /* Pastikan padding tidak menambah lebar/tinggi */
         }
 
-        .menu-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 kolom */
-            gap: 30px;
-            justify-content: center;
-            max-width: 1000px;
-            margin-bottom: 30px;
-        }
-
-        .menu-container-bottom {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 kolom */
-            gap: 30px;
-            justify-content: center;
-            max-width: 1000px;
-            width: 100%;
-        }
-
-        /* Desain Menu */
-        .menu {
-            background: rgba(33, 33, 33, 0.95);
-            border-radius: 20px;
-            padding: 30px;
+        .header {
             text-align: center;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 8px 16px rgba(255, 179, 0, 0.3);
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s;
+            margin-bottom: 40px;
+            width: 100%; /* Lebar penuh agar bisa di tengah */
         }
 
-        .menu:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.5);
+        .header-title {
+            font-size: 56px; /* Sedikit lebih besar */
+            font-weight: 700;
+            color: #1A237E; /* Primer sebagai warna utama header */
+            letter-spacing: 1px;
+            margin-bottom: 8px; /* Sedikit lebih dekat ke garis bawah */
+            padding-bottom: 5px;
+            border-bottom: 3px solid #FFD700; /* Garis bawah emas */
+            display: inline-block; /* Agar border hanya sepanjang teks */
         }
 
-        .menu-title {
-            font-size: 24px;
-            margin-bottom: 15px;
+        .header-subtitle {
+            font-size: 18px;
+            color: #757575; /* Abu-abu sedang */
+            font-style: italic;
+        }
+
+        .navbar {
+            background-color: rgba(26, 35, 126, 0.9); /* Primer */
+            backdrop-filter: blur(10px);
+            border-radius: 12px;
+            padding: 15px 30px;
+            margin-bottom: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow lebih dalam */
+            width: 90%;
+            max-width: 1100px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            border: 1px solid rgba(255, 215, 0, 0.05); /* Border tipis emas */
+        }
+
+        .nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
-            gap: 12px;
-            color: #ffb300;
+        }
+
+        .nav-item {
+            margin: 0 20px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #FFFFFF; /* Teks Primer */
+            font-size: 17px;
+            font-weight: 500; /* Sedikit lebih ringan */
+            padding: 10px 18px;
+            border-radius: 8px;
+            transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover {
+            color: #1A237E; /* Primer saat hover */
+            background-color: #FFD700; /* Sekunder (Emas) saat hover */
+        }
+
+        .nav-link i {
+            font-size: 18px;
+        }
+
+        .introduction {
+            text-align: center;
+            padding: 30px;
+            width: 80%;
+            max-width: 900px;
+            margin-bottom: 40px;
+            background-color: #FFFFFF; /* Atau warna latar belakang yang sesuai */
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E0E0E0;
+        }
+
+        .introduction h2 {
+            font-size: 24px;
             font-weight: bold;
-        }
-
-        .menu-title i {
-            font-size: 26px;
-        }
-
-        .menu-description {
-            font-size: 16px;
-            color: #bdbdbd;
+            color: #37474F; /* Warna teks primer */
             margin-bottom: 20px;
         }
 
-        .menu-button {
-            background: #ffb300;
-            color: #212121;
-            padding: 14px 24px;
-            border: none;
-            border-radius: 12px;
-            font-size: 18px;
+        .introduction > p { /* Gaya untuk paragraf kata sambutan langsung di bawah h2 */
+            font-size: 16px;
+            color: #546E7A; /* Warna teks sekunder */
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .slideshow-container {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .slide {
+            display: none;
+            padding: 20px;
+            text-align: left;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .slide h3 {
+            font-size: 20px;
             font-weight: bold;
+            color: #37474F;
+            margin-bottom: 10px;
+        }
+
+        .slide p {
+            font-size: 15px;
+            color: #757575;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        /* Titik Indikator */
+        .dot-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
             cursor: pointer;
-            transition: background 0.3s, transform 0.2s;
+            height: 12px; /* Ukuran lebih kecil */
+            width: 12px; /* Ukuran lebih kecil */
+            margin: 0 8px; /* Jarak antar titik */
+            background-color: #BDBDBD;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
         }
 
-        .menu-button:hover {
-            background: #d4af37;
-            transform: scale(1.08);
+        .active, .dot:hover {
+            background-color: #717171;
         }
 
-        /* Responsif */
+        /* Efek Fade */
+        .fade {
+            animation-name: fade;
+            animation-duration: 0.5s;
+        }
+
+        @keyframes fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        .main-content {
+            text-align: center;
+            padding: 30px;
+            width: 80%;
+            max-width: 900px;
+            background-color: #FFFFFF; /* Putih untuk konten */
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E0E0E0;
+            margin-bottom: 40px; /* Beri ruang untuk footer */
+        }
+
+        .main-content p {
+            display: none; /* Sembunyikan elemen p */
+        }
+
+       /* Footer (Lebih Menarik) */
+        .footer {
+            text-align: center;
+            padding: 25px 0; /* Sedikit lebih banyak padding vertikal */
+            font-size: 14px;
+            color: #757575;
+            border-top: 2px solid #FFD700; /* Garis pemisah emas yang lebih tebal */
+            width: 100%;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            background-color: #F8F8F8; /* Latar belakang abu-abu sangat muda */
+            box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05); /* Shadow tipis di atas */
+        }
+
+        .footer a {
+            color: #4CAF50; /* Warna hijau WhatsApp */
+            text-decoration: none;
+            font-weight: 500; /* Sedikit tebal */
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+            color: #388E3C; /* Warna hijau lebih gelap saat hover */
+        }
+
+        .whatsapp-icon {
+            font-size: 18px;
+            margin-right: 5px;
+        }
+
+        /* Responsif untuk Navbar */
         @media (max-width: 768px) {
-            .menu-container, .menu-container-bottom {
-                grid-template-columns: 1fr;
+            .header-title {
+                font-size: 40px;
+            }
+
+            .header-subtitle {
+                font-size: 16px;
+            }
+
+            .navbar {
+                flex-direction: column;
+                align-items: stretch;
+                padding: 15px;
+            }
+
+            .nav-list {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .nav-item {
+                margin: 10px 0;
+            }
+
+            .nav-link {
+                display: block;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <h2 class="header-title"> PILIH MENU YANG ANDA BUTUHKAN </h2>
-    <div class="menu-wrapper">
-        <div class="menu-container">
-            <div class="menu">
-                <h2 class="menu-title"><i class="fa fa-file-alt"></i> Form Request Pengiriman</h2>
-                <p class="menu-description">Silahkan isi form sesuai kebutuhan anda.</p>
-                <button class="menu-button" onclick="redirect('form.html')">KLIK DISINI</button>
+    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+        <header class="header">
+            <h1 class="header-title">Request Pengiriman</h1>
+            <p class="header-subtitle">Pusat Informasi dan Layanan</p>
+        </header>
+
+        <nav class="navbar">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="form.html" class="nav-link"><i class="fa fa-file-alt"></i> Form Request</a>
+                </li>
+                <li class="nav-item">
+                    <a href="feedback.html" class="nav-link"><i class="fa fa-comments"></i> Feedback</a>
+                </li>
+                <li class="nav-item">
+                    <a href="trackingrt.html" class="nav-link"><i class="fa fa-map-marker-alt"></i> Tracking RT</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://script.google.com/macros/s/AKfycbxQg_u0Dd_S18WM3LC3xiHBMEWIWykgf5-tw4BEy0riFZfjujkSTB0fLpkHSCTgdp2O/exec" class="nav-link"><i class="fa fa-clipboard-check"></i> Makesure DO Project</a>
+                </li>
+                <li class="nav-item">
+                    <a href="pic.html" class="nav-link"><i class="fa fa-user-tie"></i> Daftar PIC</a>
+                </li>
+                <li class="nav-item">
+                    <a href="qna.html" class="nav-link"><i class="fa fa-question-circle"></i> QNA</a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="introduction">
+            <h2>Selamat Datang di Layanan Request Pengiriman</h2>
+            <p>Kami hadir untuk memudahkan Anda dalam melakukan permintaan pengiriman dan memantau statusnya. Berikut adalah penjelasan singkat mengenai setiap menu yang tersedia:</p>
+
+            <div class="slideshow-container">
+                <div class="slide fade">
+                    <h3><i class="fa fa-file-alt"></i> Form Request Pengiriman</h3>
+                    <p>Gunakan menu ini untuk mengisi formulir permintaan pengiriman sesuai dengan kebutuhan Anda. Pastikan Anda melengkapi semua informasi yang diperlukan dengan benar.</p>
+                </div>
+
+                <div class="slide fade">
+                    <h3><i class="fa fa-comments"></i> Feedback Request Pengiriman</h3>
+                    <p>Melalui menu ini, Anda dapat melihat status terkini dari permintaan pengiriman yang telah Anda ajukan. Informasi mengenai proses dan status pengiriman akan ditampilkan di sini.</p>
+                </div>
+
+                <div class="slide fade">
+                    <h3><i class="fa fa-map-marker-alt"></i> Tracking RT</h3>
+                    <p>Menu ini memungkinkan Anda untuk melacak status Request Toko (RT) pengiriman Anda secara langsung. Masukkan nomor RT untuk mendapatkan informasi apakah rt anda AB, TD, Atau Sewa, Jika RT anda tidak tertera silahkan isi form diatas.</p>
+                </div>
+
+                <div class="slide fade">
+                    <h3><i class="fa fa-clipboard-check"></i> Makesure DO Project</h3>
+                    <p>Kami mohon bantuan Anda untuk mengonfirmasi apakah Delivery Order (DO) project dapat diterima sesuai jadwal atau perlu adanya penjadwalan ulang. Informasi Anda sangat penting untuk kelancaran operasional.</p>
+                </div>
+
+                <div class="slide fade">
+                    <h3><i class="fa fa-user-tie"></i> Daftar PIC</h3>
+                    <p>Di menu ini, Anda dapat melihat daftar Person In Charge (PIC) yang sedang bertugas untuk berbagai layanan terkait pengiriman. Anda dapat menghubungi PIC yang sesuai jika memiliki pertanyaan atau kendala.</p>
+                </div>
+
+                <div class="slide fade">
+                    <h3><i class="fa fa-question-circle"></i> QNA</h3>
+                    <p>Menu QNA (Questions and Answers) berisi daftar pertanyaan yang sering diajukan beserta jawabannya terkait proses pengiriman dan layanan lainnya. Silakan periksa menu ini sebelum menghubungi dukungan pelanggan.</p>
+                </div>
             </div>
-            <div class="menu">
-                <h2 class="menu-title"><i class="fa fa-comments"></i> Feedback Request Pengiriman</h2>
-                <p class="menu-description">Cek hasil request anda untuk memastikan statusnya.</p>
-                <button class="menu-button" onclick="redirect('feedback.html')">KLIK DISINI</button>
-            </div>
-            <div class="menu">
-                <h2 class="menu-title"><i class="fa fa-map-marker-alt"></i> Tracking RT</h2>
-                <p class="menu-description">Lacak status RT anda dengan mudah.</p>
-                <button class="menu-button" onclick="redirect('trackingrt.html')">KLIK DISINI</button>
+
+            <div class="dot-container">
+                <span class="dot active" onclick="currentSlide(1)"></span>
+                <span class="dot" onclick="currentSlide(2)"></span>
+                <span class="dot" onclick="currentSlide(3)"></span>
+                <span class="dot" onclick="currentSlide(4)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
             </div>
         </div>
-        <div class="menu-container-bottom">
-            <div class="menu">
-                <h2 class="menu-title"><i class="fa fa-clipboard-check"></i> Makesure DO Project</h2>
-                <p class="menu-description">Bantu kami makesure do project h-1 apakah bisa diterima atau mundur jalur.</p>
-                <button class="menu-button" onclick="redirect('https://script.google.com/macros/s/AKfycbxQg_u0Dd_S18WM3LC3xiHBMEWIWykgf5-tw4BEy0riFZfjujkSTB0fLpkHSCTgdp2O/exec')">KLIK DISINI</button>
-            </div>
-            <div class="menu">
-                <h2 class="menu-title"><i class="fa fa-user-tie"></i> Daftar PIC</h2>
-                <p class="menu-description">Cek disini untuk melihat siapa yang sedang bertugas.</p>
-                <button class="menu-button" onclick="redirect('pic.html')">KLIK DISINI</button>
-            </div>
-            <div class="menu">
-                <h2 class="menu-title"><i class="fa fa-question-circle"></i> QNA</h2>
-                <p class="menu-description">Punya pertanyaan? Temukan jawabannya di sini.</p>
-                <button class="menu-button" onclick="redirect('qna.html')">KLIK DISINI</button>
-            </div>
-        </div>
+
+        <main class="main-content">
+            <p style="display: none;">Silahkan gunakan menu di atas untuk mengakses layanan yang Anda butuhkan.</p>
+        </main>
+
+        <footer class="footer">
+            <p>&copy; 2025 Dibuat oleh Faisal. Hak Cipta Dilindungi.</p>
+            <p>
+                <a href="https://wa.me/6287874805035" target="_blank" rel="noopener noreferrer">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i> Hubungi via WhatsApp
+                </a>
+            </p>
+            <p>Terima kasih atas kunjungan Anda. Semoga layanan ini bermanfaat!</p>
+        </footer>
     </div>
 
     <script>
-        function redirect(url) {
-            window.location.href = url;
+        let slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) {slideIndex = 1}
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 5000); // Ganti slide setiap 5 detik
         }
-    </script>
+
+        function currentSlide(n) {
+            let i;
+            let slides = document.getElementsByClassName("slide");
+            let dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {slideIndex = 1}
+            if (n < 1) {slideIndex = slides.length}
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+}
+slides[n-1].style.display = "block";
+dots[n-1].className += " active";
+slideIndex = n; // Perbarui slideIndex saat navigasi manual
+}
+</script>
 </body>
 </html>
