@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Pengiriman</title>
+    <title>Layanan Permintaan Pengiriman</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,53 +22,63 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #ECEFF1, #F5F5F5); /* Gradien Latar Belakang */
-            color: #212121; /* Teks Sekunder sebagai default */
+            background: linear-gradient(135deg, #e0f2f7, #f0f8ea); /* Gradien latar belakang halus */
+            color: #333; /* Teks utama */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding-top: 40px; /* Kurangi padding atas agar judul lebih ke tengah vertikal */
-            padding-bottom: 40px; /* Tambahkan padding bawah untuk footer */
-            box-sizing: border-box; /* Pastikan padding tidak menambah lebar/tinggi */
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        .container {
+            width: 95%;
+            max-width: 1200px;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 40px;
-            width: 100%; /* Lebar penuh agar bisa di tengah */
+            margin-bottom: 60px;
         }
 
         .header-title {
-            font-size: 56px; /* Sedikit lebih besar */
+            font-size: 52px;
             font-weight: 700;
-            color: #1A237E; /* Primer sebagai warna utama header */
-            letter-spacing: 1px;
-            margin-bottom: 8px; /* Sedikit lebih dekat ke garis bawah */
-            padding-bottom: 5px;
-            border-bottom: 3px solid #FFD700; /* Garis bawah emas */
-            display: inline-block; /* Agar border hanya sepanjang teks */
+            color: #2c3e50; /* Biru tua elegan (warna primer) */
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
+            display: inline-block;
+        }
+
+        .header-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, #007bff, #29abe2); /* Gradien aksen */
+            border-radius: 2px;
         }
 
         .header-subtitle {
-            font-size: 18px;
-            color: #757575; /* Abu-abu sedang */
+            font-size: 20px;
+            color: #777; /* Abu-abu sedang */
             font-style: italic;
         }
 
         .navbar {
-            background-color: rgba(26, 35, 126, 0.9); /* Primer */
-            backdrop-filter: blur(10px);
-            border-radius: 12px;
-            padding: 15px 30px;
+            background-color: rgba(255, 255, 255, 0.95); /* Latar belakang putih semi-transparan */
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Shadow lebih halus dan lebar */
             margin-bottom: 50px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Shadow lebih dalam */
-            width: 90%;
-            max-width: 1100px;
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border: 1px solid rgba(255, 215, 0, 0.05); /* Border tipis emas */
+            padding: 20px 30px;
+            width: 100%;
+            backdrop-filter: blur(10px); /* Efek blur untuk latar belakang transparan */
+            border-top: 3px solid #007bff; /* Aksen garis atas lebih tebal */
         }
 
         .nav-list {
@@ -76,114 +86,128 @@
             padding: 0;
             margin: 0;
             display: flex;
+            justify-content: space-around;
             align-items: center;
         }
 
         .nav-item {
-            margin: 0 20px;
+            margin: 0;
         }
 
         .nav-link {
             text-decoration: none;
-            color: #FFFFFF; /* Teks Primer */
+            color: #555; /* Abu-abu gelap */
             font-size: 17px;
-            font-weight: 500; /* Sedikit lebih ringan */
-            padding: 10px 18px;
+            font-weight: 500;
+            padding: 12px 20px;
             border-radius: 8px;
-            transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out;
+            transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Tambah transisi transform */
             display: flex;
             align-items: center;
-            gap: 8px;
-        }
-
-        .nav-link:hover {
-            color: #1A237E; /* Primer saat hover */
-            background-color: #FFD700; /* Sekunder (Emas) saat hover */
+            gap: 10px;
         }
 
         .nav-link i {
             font-size: 18px;
+            color: #007bff; /* Aksen warna pada ikon */
+            transition: color 0.3s ease-in-out; /* Tambahkan transisi untuk ikon */
+        }
+
+        .nav-link:hover {
+            color: #fff;
+            background: linear-gradient(to right, #007bff, #29abe2); /* Gradien hover */
+            transform: translateY(-2px); /* Efek sedikit naik saat hover */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambah shadow saat hover */
+        }
+
+        .nav-link:hover i {
+            color: #fff; /* Ikon juga berubah warna menjadi putih saat hover */
         }
 
         .introduction {
+            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang putih semi-transparan */
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Shadow lebih halus */
+            padding: 40px;
+            margin-bottom: 50px;
+            width: 100%;
             text-align: center;
-            padding: 30px;
-            width: 80%;
-            max-width: 900px;
-            margin-bottom: 40px;
-            background-color: #FFFFFF; /* Atau warna latar belakang yang sesuai */
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
+            border-left: 5px solid #007bff; /* Aksen garis kiri lebih tebal */
+            backdrop-filter: blur(10px); /* Efek blur */
         }
 
         .introduction h2 {
-            font-size: 24px;
-            font-weight: bold;
-            color: #37474F; /* Warna teks primer */
-            margin-bottom: 20px;
+            font-size: 32px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 25px;
         }
 
-        .introduction > p { /* Gaya untuk paragraf kata sambutan langsung di bawah h2 */
-            font-size: 16px;
-            color: #546E7A; /* Warna teks sekunder */
-            line-height: 1.6;
-            margin-bottom: 30px;
+        .introduction > p {
+            font-size: 17px;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 35px;
         }
 
         .slideshow-container {
             position: relative;
             overflow: hidden;
             width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
         .slide {
             display: none;
-            padding: 20px;
+            padding: 30px;
             text-align: left;
             width: 100%;
             box-sizing: border-box;
+            background-color: #fff;
         }
 
         .slide h3 {
-            font-size: 20px;
-            font-weight: bold;
-            color: #37474F;
-            margin-bottom: 10px;
+            font-size: 22px;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 8px;
         }
 
         .slide p {
-            font-size: 15px;
-            color: #757575;
-            line-height: 1.5;
-            margin-bottom: 15px;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 20px;
         }
 
         /* Titik Indikator */
         .dot-container {
             text-align: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .dot {
             cursor: pointer;
-            height: 12px; /* Ukuran lebih kecil */
-            width: 12px; /* Ukuran lebih kecil */
-            margin: 0 8px; /* Jarak antar titik */
-            background-color: #BDBDBD;
+            height: 12px;
+            width: 12px;
+            margin: 0 8px;
+            background-color: #bbb;
             border-radius: 50%;
             display: inline-block;
             transition: background-color 0.6s ease;
         }
 
         .active, .dot:hover {
-            background-color: #717171;
+            background-color: #007bff; /* Aksen warna pada titik aktif/hover */
         }
 
         /* Efek Fade */
         .fade {
             animation-name: fade;
-            animation-duration: 0.5s;
+            animation-duration: 0.7s;
         }
 
         @keyframes fade {
@@ -192,53 +216,51 @@
         }
 
         .main-content {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            margin-bottom: 50px;
+            width: 100%;
             text-align: center;
-            padding: 30px;
-            width: 80%;
-            max-width: 900px;
-            background-color: #FFFFFF; /* Putih untuk konten */
-            border-radius: 12px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            border: 1px solid #E0E0E0;
-            margin-bottom: 40px; /* Beri ruang untuk footer */
         }
 
         .main-content p {
             display: none; /* Sembunyikan elemen p */
         }
 
-       /* Footer (Lebih Menarik) */
+        /* Footer */
         .footer {
             text-align: center;
-            padding: 25px 0; /* Sedikit lebih banyak padding vertikal */
-            font-size: 14px;
-            color: #757575;
-            border-top: 2px solid #FFD700; /* Garis pemisah emas yang lebih tebal */
+            padding: 35px 0;
+            font-size: 15px;
+            color: #777;
+            border-top: 1px solid #ddd;
             width: 100%;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            background-color: #F8F8F8; /* Latar belakang abu-abu sangat muda */
-            box-shadow: 0 -1px 4px rgba(0, 0, 0, 0.05); /* Shadow tipis di atas */
+            background-color: #f9f9f9; /* Latar belakang footer lebih terang */
         }
 
         .footer a {
-            color: #4CAF50; /* Warna hijau WhatsApp */
+            color: #007bff; /* Warna biru tautan */
             text-decoration: none;
-            font-weight: 500; /* Sedikit tebal */
             transition: color 0.3s ease;
         }
 
         .footer a:hover {
             text-decoration: underline;
-            color: #388E3C; /* Warna hijau lebih gelap saat hover */
+            color: #0056b3;
+        }
+
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: #25d366; /* Warna hijau WhatsApp */
+            font-weight: 500;
         }
 
         .whatsapp-icon {
             font-size: 18px;
-            margin-right: 5px;
         }
 
         /* Responsif untuk Navbar */
@@ -248,94 +270,112 @@
             }
 
             .header-subtitle {
-                font-size: 16px;
+                font-size: 18px;
             }
 
             .navbar {
-                flex-direction: column;
-                align-items: stretch;
                 padding: 15px;
+                border-top: 3px solid #007bff; /* Pertahankan aksen di mobile */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             }
 
             .nav-list {
                 flex-direction: column;
-                width: 100%;
+                align-items: stretch;
             }
 
             .nav-item {
-                margin: 10px 0;
+                margin: 15px 0;
             }
 
             .nav-link {
                 display: block;
                 text-align: center;
             }
+
+            .nav-link i {
+                color: #007bff; /* Pertahankan aksen ikon di mobile */
+            }
+
+            .introduction {
+                padding: 30px;
+                border-left: 5px solid #007bff; /* Pertahankan aksen di mobile */
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .introduction h2 {
+                font-size: 28px;
+            }
+
+            .introduction > p {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
-    <div style="display: flex; flex-direction: column; align-items: center; width: 100%;">
+    <div class="container">
         <header class="header">
-            <h1 class="header-title">Request Pengiriman</h1>
-            <p class="header-subtitle">Pusat Informasi dan Layanan</p>
+            <h1 class="header-title">Layanan Permintaan Pengiriman</h1>
+            <p class="header-subtitle">Informasi dan Akses Cepat</p>
         </header>
 
         <nav class="navbar">
             <ul class="nav-list">
                 <li class="nav-item">
-                    <a href="form.html" class="nav-link"><i class="fa fa-file-alt"></i> Form Request</a>
+                    <a href="form.html" class="nav-link"><i class="fa fa-file-alt"></i> Form Permintaan</a>
                 </li>
                 <li class="nav-item">
-                    <a href="feedback.html" class="nav-link"><i class="fa fa-comments"></i> Feedback</a>
+                    <a href="feedback.html" class="nav-link"><i class="fa fa-comments"></i> Status Permintaan</a>
                 </li>
                 <li class="nav-item">
-                    <a href="trackingrt.html" class="nav-link"><i class="fa fa-map-marker-alt"></i> Tracking RT</a>
+                    <a href="trackingrt.html" class="nav-link"><i class="fa fa-map-marker-alt"></i> Lacak RT</a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://script.google.com/macros/s/AKfycbxQg_u0Dd_S18WM3LC3xiHBMEWIWykgf5-tw4BEy0riFZfjujkSTB0fLpkHSCTgdp2O/exec" class="nav-link"><i class="fa fa-clipboard-check"></i> Makesure DO Project</a>
+                    <a href="https://script.google.com/macros/s/AKfycbxQg_u0Dd_S18WM3LC3xiHBMEWIWykgf5-tw4BEy0riFZfjujkSTB0fLpkHSCTgdp2O/exec" class="nav-link"><i class="fa fa-clipboard-check"></i> Konfirmasi DO Project</a>
                 </li>
                 <li class="nav-item">
-                    <a href="pic.html" class="nav-link"><i class="fa fa-user-tie"></i> Daftar PIC</a>
+                    <a href="pic.html" class="nav-link"><i class="fa fa-user-tie"></i> Daftar Kontak PIC</a>
                 </li>
                 <li class="nav-item">
-                    <a href="qna.html" class="nav-link"><i class="fa fa-question-circle"></i> QNA</a>
+                    <a href="qna.html" class="nav-link"><i class="fa fa-question-circle"></i> FAQ</a>
                 </li>
             </ul>
         </nav>
 
         <div class="introduction">
-            <h2>Selamat Datang di Layanan Request Pengiriman</h2>
-            <p>Kami hadir untuk memudahkan Anda dalam melakukan permintaan pengiriman dan memantau statusnya. Berikut adalah penjelasan singkat mengenai setiap menu yang tersedia:</p>
+            <h2>Selamat Datang di Portal Layanan Permintaan Pengiriman</h2>
+            <p>Kami menyediakan platform terpusat untuk memudahkan Anda dalam mengajukan permintaan pengiriman dan mengakses informasi terkait. Jelajahi fitur-fitur yang tersedia untuk pengalaman yang lebih efisien.</p>
 
             <div class="slideshow-container">
                 <div class="slide fade">
-                    <h3><i class="fa fa-file-alt"></i> Form Request Pengiriman</h3>
-                    <p>Gunakan menu ini untuk mengisi formulir permintaan pengiriman sesuai dengan kebutuhan Anda. Pastikan Anda melengkapi semua informasi yang diperlukan dengan benar.</p>
+                    <h3><i class="fa fa-file-alt"></i> Form Permintaan Pengiriman</h3>
+                    <p>Ajukan permintaan pengiriman Anda dengan mengisi formulir yang tersedia. Pastikan data yang Anda masukkan akurat dan lengkap untuk mempercepat proses.</p>
                 </div>
 
                 <div class="slide fade">
-                    <h3><i class="fa fa-comments"></i> Feedback Request Pengiriman</h3>
-                    <p>Melalui menu ini, Anda dapat melihat status terkini dari permintaan pengiriman yang telah Anda ajukan. Informasi mengenai proses dan status pengiriman akan ditampilkan di sini.</p>
+                    <h3><i class="fa fa-comments"></i> Status Permintaan Pengiriman</h3>
+                    <p>Pantau perkembangan permintaan pengiriman yang telah Anda ajukan. Informasi terbaru mengenai status dan detail pengiriman akan ditampilkan di sini.</p>
                 </div>
 
                 <div class="slide fade">
-                    <h3><i class="fa fa-map-marker-alt"></i> Tracking RT</h3>
-                    <p>Menu ini memungkinkan Anda untuk melacak status Request Toko (RT) pengiriman Anda secara langsung. Masukkan nomor RT untuk mendapatkan informasi apakah rt anda AB, TD, Atau Sewa, Jika RT anda tidak tertera silahkan isi form diatas.</p>
+                    <h3><i class="fa fa-map-marker-alt"></i> Lacak Request Toko (RT)</h3>
+                    <p>Gunakan fitur ini untuk mengetahui status Request Toko (RT) pengiriman Anda. Masukkan nomor RT untuk melihat informasi apakah RT Anda berstatus AB, TD, atau Sewa. Jika RT tidak ditemukan, silakan gunakan Form Permintaan.</p>
                 </div>
 
                 <div class="slide fade">
-                    <h3><i class="fa fa-clipboard-check"></i> Makesure DO Project</h3>
-                    <p>Kami mohon bantuan Anda untuk mengonfirmasi apakah Delivery Order (DO) project dapat diterima sesuai jadwal atau perlu adanya penjadwalan ulang. Informasi Anda sangat penting untuk kelancaran operasional.</p>
+                    <h3><i class="fa fa-clipboard-check"></i> Konfirmasi Delivery Order (DO) Project</h3>
+                    <p>Mohon berikan konfirmasi terkait penerimaan Delivery Order (DO) project. Informasi Anda membantu kami dalam memastikan kelancaran logistik.</p>
                 </div>
 
                 <div class="slide fade">
-                    <h3><i class="fa fa-user-tie"></i> Daftar PIC</h3>
-                    <p>Di menu ini, Anda dapat melihat daftar Person In Charge (PIC) yang sedang bertugas untuk berbagai layanan terkait pengiriman. Anda dapat menghubungi PIC yang sesuai jika memiliki pertanyaan atau kendala.</p>
+                    <h3><i class="fa fa-user-tie"></i> Daftar Kontak Person In Charge (PIC)</h3>
+                    <p>Temukan daftar PIC yang bertanggung jawab atas berbagai layanan pengiriman. Anda dapat menghubungi PIC terkait jika memiliki pertanyaan spesifik atau memerlukan bantuan lebih lanjut.</p>
                 </div>
 
                 <div class="slide fade">
-                    <h3><i class="fa fa-question-circle"></i> QNA</h3>
-                    <p>Menu QNA (Questions and Answers) berisi daftar pertanyaan yang sering diajukan beserta jawabannya terkait proses pengiriman dan layanan lainnya. Silakan periksa menu ini sebelum menghubungi dukungan pelanggan.</p>
+                    <h3><i class="fa fa-question-circle"></i> Frequently Asked Questions (FAQ)</h3>
+                    <p>Temukan jawaban atas pertanyaan umum terkait layanan pengiriman kami. Bagian FAQ menyediakan informasi cepat dan berguna untuk berbagai topik.</p>
                 </div>
             </div>
 
@@ -344,8 +384,7 @@
                 <span class="dot" onclick="currentSlide(2)"></span>
                 <span class="dot" onclick="currentSlide(3)"></span>
                 <span class="dot" onclick="currentSlide(4)"></span>
-                <span class="dot" onclick="currentSlide(5)"></span>
-                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span><span class="dot" onclick="currentSlide(6)"></span>
             </div>
         </div>
 
@@ -354,13 +393,13 @@
         </main>
 
         <footer class="footer">
-            <p>&copy; 2025 Dibuat oleh Faisal. Hak Cipta Dilindungi.</p>
+            <p>&copy; 2025 Hak Cipta Dilindungi. Dikelola oleh Faisal.</p>
             <p>
-                <a href="https://wa.me/6287874805035" target="_blank" rel="noopener noreferrer">
-                    <i class="fab fa-whatsapp whatsapp-icon"></i> Hubungi via WhatsApp
+                <a href="https://wa.me/6287874805035" target="_blank" rel="noopener noreferrer" class="whatsapp-link">
+                    <i class="fab fa-whatsapp whatsapp-icon"></i> Hubungi Kami via WhatsApp
                 </a>
             </p>
-            <p>Terima kasih atas kunjungan Anda. Semoga layanan ini bermanfaat!</p>
+            <p>Terima kasih telah menggunakan layanan kami.</p>
         </footer>
     </div>
 
@@ -396,11 +435,11 @@
             }
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
-}
-slides[n-1].style.display = "block";
-dots[n-1].className += " active";
-slideIndex = n; // Perbarui slideIndex saat navigasi manual
-}
-</script>
+            }
+            slides[n-1].style.display = "block";
+            dots[n-1].className += " active";
+            slideIndex = n; // Perbarui slideIndex saat navigasi manual
+        }
+    </script>
 </body>
 </html>
