@@ -7,169 +7,183 @@
     <style>
         body {
             font-family: 'Roboto', sans-serif;
-            background: linear-gradient(135deg, #43cea2, #185a9d);
+            background-color: #2c3e50;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            color: #fff;
+            color: #ecf0f1;
             overflow: hidden;
+            font-size: 14px;
         }
 
         .login-container {
-            background-color: rgba(255, 255, 255, 0.15);
-            padding: 50px;
-            border-radius: 15px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            width: 400px;
+            background-color: rgba(52, 73, 94, 0.8);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 350px;
             text-align: center;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             animation: fadeIn 0.5s ease-out;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-15px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .login-header {
-            margin-bottom: 40px;
-        }
-
-        .login-header img {
-            max-width: 100px;
-            height: auto;
-            margin-bottom: 25px;
-            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.3));
-            animation: pulse 1.5s infinite alternate;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.05); }
+            margin-bottom: 30px;
+            text-align: center;
         }
 
         .login-header h2 {
-            color: #fff;
+            color: #ecf0f1;
             margin-top: 0;
-            font-size: 2.8em;
+            font-size: 2.2em;
             font-weight: 700;
             margin-bottom: 8px;
-            position: relative; /* Untuk garis bawah */
-            display: inline-block; /* Agar garis bawah sesuai lebar teks */
+            position: relative;
+            display: inline-block;
         }
 
         .login-header h2::after {
             content: '';
             position: absolute;
             left: 50%;
-            bottom: -5px; /* Jarak garis bawah dari teks */
+            bottom: -4px;
             transform: translateX(-50%);
-            width: 60%; /* Lebar garis bawah */
-            height: 3px;
-            background-color: #fff;
-            border-radius: 1.5px;
+            width: 50%;
+            height: 2px;
+            background-color: #3498db;
+            border-radius: 1px;
         }
 
         .login-header p {
-            color: #eee;
-            font-size: 1.1em;
+            color: #bdc3c7;
+            font-size: 1em;
             margin-top: 0;
             opacity: 0.8;
         }
 
         .form-group {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: left;
-            position: relative;
         }
 
         .form-group label {
             display: block;
-            margin-bottom: 10px;
-            color: #fff;
-            font-weight: 600;
-            font-size: 1.1em;
+            margin-bottom: 5px;
+            color: #ecf0f1;
+            font-weight: 500;
+            font-size: 0.9em;
             opacity: 0.9;
         }
 
         .form-group input[type="text"],
         .form-group input[type="password"] {
-            width: calc(100% - 40px);
-            padding: 15px 15px 15px 45px;
+            width: 100%;
+            padding: 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             box-sizing: border-box;
-            font-size: 16px;
-            background-color: rgba(255, 255, 255, 0.2);
-            color: #fff;
+            font-size: 0.9em;
+            background-color: rgba(52, 73, 94, 0.6);
+            color: #ecf0f1;
             transition: background-color 0.3s ease, border-color 0.3s ease;
         }
 
         .form-group input::placeholder {
-            color: #ddd;
-            opacity: 0.8;
+            color: #bdc3c7;
+            opacity: 0.7;
         }
 
         .form-group input:focus {
             outline: none;
-            background-color: rgba(255, 255, 255, 0.35);
-            border-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(52, 73, 94, 0.8);
+            border-color: #3498db;
         }
 
         .form-group button {
-            background: linear-gradient(to right, #00c6fb, #005bea);
+            background: linear-gradient(to right, #3498db, #2980b9);
             color: white;
-            padding: 16px 20px;
+            padding: 12px 15px;
             border: none;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
-            font-size: 1.2em;
-            font-weight: 600;
+            font-size: 1em;
+            font-weight: 500;
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
         }
 
         .form-group button:hover {
-            transform: scale(1.02);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            transform: scale(1.01);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
         }
 
         .error-message {
             color: #ffdddd;
-            margin-top: 25px;
-            font-size: 0.95em;
+            margin-top: 15px;
+            font-size: 0.85em;
             text-align: center;
             animation: shake 0.3s ease-in-out;
         }
 
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+            25% { transform: translateX(-3px); }
+            75% { transform: translateX(3px); }
         }
 
-        .input-icon {
-            position: absolute;
-            left: 15px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #fff;
-            opacity: 0.7;
-            font-size: 1.2em;
-            /* Tambahkan properti ini untuk centering vertikal yang lebih baik */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%; /* Set tinggi agar sesuai dengan input */
-            width: 40px; /* Lebar ikon container */
-        }
+        /* Responsif untuk tampilan ponsel yang lebih kecil */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+                border-radius: 8px;
+                max-width: 95%;
+            }
 
-        .form-group input {
-            padding-left: 45px; /* Sesuaikan padding agar teks tidak tertutup ikon */
+            .login-header {
+                margin-bottom: 20px;
+            }
+
+            .login-header h2 {
+                font-size: 1.8em;
+                margin-bottom: 4px;
+            }
+
+            .form-group {
+                margin-bottom: 15px;
+            }
+
+            .form-group label {
+                font-size: 0.85em;
+                margin-bottom: 6px;
+            }
+
+            .form-group input[type="text"],
+            .form-group input[type="password"] {
+                padding: 8px;
+                font-size: 0.85em;
+                border-radius: 6px;
+            }
+
+            .form-group button {
+                padding: 10px 12px;
+                font-size: 0.9em;
+                border-radius: 6px;
+            }
+
+            .error-message {
+                margin-top: 10px;
+                font-size: 0.8em;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
@@ -178,19 +192,16 @@
 <body>
     <div class="login-container">
         <div class="login-header">
-            <img src="logo.png" alt="Logo Aplikasi">
-            <h2>Selamat Datang</h2>
-            <p>Masuk untuk mengakses akun Anda.</p>
+            <h2>Akses Akun</h2>
+            <p>Silakan masukkan kredensial Anda untuk melanjutkan.</p>
         </div>
         <form id="loginForm">
             <div class="form-group">
                 <label for="username">User:</label>
-                <span class="input-icon"><i class="fas fa-user"></i></span>
                 <input type="text" id="username" name="username" placeholder="Masukkan username Anda" required>
             </div>
             <div class="form-group">
                 <label for="password">Kata Sandi:</label>
-                <span class="input-icon"><i class="fas fa-lock"></i></span>
                 <input type="password" id="password" name="password" placeholder="Masukkan kata sandi Anda" required>
             </div>
             <div class="form-group">
