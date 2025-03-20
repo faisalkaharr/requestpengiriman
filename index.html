@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset CSS untuk konsistensi */
-        body, h1, h2, p, ul, li, a, button {
+        body, h1, h2, p, ul, li, a, button, img, i, div {
             margin: 0;
             padding: 0;
             border: 0;
@@ -22,8 +22,8 @@
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #e0f2f7, #f0f8ea); /* Gradien latar belakang halus */
-            color: #333; /* Teks utama */
+            background-color: #2c3e50; /* Biru gelap sebagai latar belakang */
+            color: #ecf0f1; /* Teks utama warna lebih terang */
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -39,13 +39,13 @@
 
         .header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 30px; /* Kurangi margin bawah header */
         }
 
         .header-title {
             font-size: 52px;
             font-weight: 700;
-            color: #2c3e50; /* Biru tua elegan (warna primer) */
+            color: #fff; /* Judul utama warna putih */
             margin-bottom: 15px;
             position: relative;
             padding-bottom: 15px;
@@ -60,25 +60,59 @@
             transform: translateX(-50%);
             width: 80px;
             height: 4px;
-            background: linear-gradient(to right, #007bff, #29abe2); /* Gradien aksen */
+            background: linear-gradient(to right, #3498db, #2980b9); /* Aksen biru profesional */
             border-radius: 2px;
         }
 
         .header-subtitle {
             font-size: 20px;
-            color: #777; /* Abu-abu sedang */
+            color: #bdc3c7; /* Subjudul warna abu-abu terang */
             font-style: italic;
         }
 
-        .navbar {
-            background-color: rgba(255, 255, 255, 0.95); /* Latar belakang putih semi-transparan */
-            border-radius: 10px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Shadow lebih halus dan lebar */
-            margin-bottom: 50px;
-            padding: 20px 30px;
+        /* Slideshow Gambar */
+        .image-slideshow-container {
+            position: relative;
+            overflow: hidden;
             width: 100%;
-            backdrop-filter: blur(10px); /* Efek blur untuk latar belakang transparan */
-            border-top: 3px solid #007bff; /* Aksen garis atas lebih tebal */
+            max-height: 400px; /* Sesuaikan tinggi maksimum slideshow */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .image-slide {
+            display: none;
+            width: 100%;
+        }
+
+        .image-slide img {
+            display: block;
+            width: 100%;
+            height: 400px; /* Sesuaikan tinggi gambar */
+            object-fit: cover; /* Membuat gambar mengisi seluruh area tanpa terpotong (cropping mungkin terjadi) */
+        }
+
+        /* Efek Fade Gambar */
+        .image-fade {
+            animation-name: image-fade;
+            animation-duration: 1.5s;
+        }
+
+        @keyframes image-fade {
+            from {opacity: .4}
+            to {opacity: 1}
+        }
+
+        .navbar {
+            background-color: rgba(52, 73, 94, 0.95); /* Latar belakang navbar lebih gelap */
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Shadow lebih kuat */
+            margin-bottom: 30px; /* Kurangi margin bawah navbar */
+            padding: 15px 30px; /* Sedikit kurangi padding vertikal */
+            width: 100%;
+            backdrop-filter: blur(10px);
+            border-top: 3px solid #3498db; /* Aksen biru profesional lebih tebal */
         }
 
         .nav-list {
@@ -96,133 +130,183 @@
 
         .nav-link {
             text-decoration: none;
-            color: #555; /* Abu-abu gelap */
-            font-size: 17px;
+            color: #fff; /* Link warna putih */
+            font-size: 16px; /* Sedikit kurangi ukuran font link */
             font-weight: 500;
-            padding: 12px 20px;
+            padding: 10px 18px; /* Sedikit kurangi padding link */
             border-radius: 8px;
-            transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.2s ease-in-out; /* Tambah transisi transform */
+            transition: color 0.3s ease-in-out, background-color 0.3s ease-in-out, transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out; /* Tambah transisi box-shadow */
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px; /* Sedikit kurangi gap ikon dan teks */
         }
 
         .nav-link i {
-            font-size: 18px;
-            color: #007bff; /* Aksen warna pada ikon */
-            transition: color 0.3s ease-in-out; /* Tambahkan transisi untuk ikon */
+            font-size: 16px; /* Sedikit kurangi ukuran font ikon */
+            color: #3498db; /* Aksen warna pada ikon */
+            transition: color 0.3s ease-in-out;
         }
 
         .nav-link:hover {
             color: #fff;
-            background: linear-gradient(to right, #007bff, #29abe2); /* Gradien hover */
-            transform: translateY(-2px); /* Efek sedikit naik saat hover */
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Tambah shadow saat hover */
+            background: linear-gradient(to right, #3498db, #2980b9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3); /* Efek shadow biru saat hover */
         }
 
         .nav-link:hover i {
-            color: #fff; /* Ikon juga berubah warna menjadi putih saat hover */
+            color: #fff;
         }
 
         .introduction {
-            background-color: rgba(255, 255, 255, 0.9); /* Latar belakang putih semi-transparan */
+            background-color: rgba(52, 73, 94, 0.9); /* Latar belakang introduction lebih gelap */
             border-radius: 10px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Shadow lebih halus */
-            padding: 40px;
-            margin-bottom: 50px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+            padding: 25px; /* Kurangi sedikit padding introduction */
+            margin-bottom: 30px; /* Kurangi margin bawah introduction */
             width: 100%;
             text-align: center;
-            border-left: 5px solid #007bff; /* Aksen garis kiri lebih tebal */
-            backdrop-filter: blur(10px); /* Efek blur */
+            border-left: 5px solid #3498db; /* Aksen biru profesional lebih tebal */
+            backdrop-filter: blur(10px);
         }
 
         .introduction h2 {
-            font-size: 32px;
+            font-size: 26px; /* Sedikit kurangi ukuran font h2 introduction */
             font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 25px;
+            color: #fff;
+            margin-bottom: 15px; /* Kurangi margin bawah h2 introduction */
         }
 
         .introduction > p {
-            font-size: 17px;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 35px;
+            font-size: 15px; /* Sedikit kurangi ukuran font p introduction */
+            color: #bdc3c7;
+            line-height: 1.6; /* Sedikit rapatkan line height */
+            margin-bottom: 20px; /* Kurangi margin bawah p introduction */
         }
 
-        .slideshow-container {
-            position: relative;
+        .introduction .slideshow-container {
+            max-width: 80%; /* Batasi lebar kontainer slideshow */
+            margin: 0 auto 25px; /* Tengahkan dan beri margin bawah */
             overflow: hidden;
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
         }
 
-        .slide {
-            display: none;
-            padding: 30px;
-            text-align: left;
-            width: 100%;
-            box-sizing: border-box;
-            background-color: #fff;
-        }
-
-        .slide h3 {
-            font-size: 22px;
-            font-weight: 600;
-            color: #2c3e50;
-            margin-bottom: 15px;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 8px;
-        }
-
-        .slide p {
-            font-size: 16px;
-            color: #666;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        /* Titik Indikator */
-        .dot-container {
+        .introduction .slideshow-container .slide {
+            padding: 20px; /* Kurangi padding slide */
             text-align: center;
-            margin-top: 30px;
         }
 
-        .dot {
-            cursor: pointer;
-            height: 12px;
-            width: 12px;
-            margin: 0 8px;
-            background-color: #bbb;
-            border-radius: 50%;
+        .introduction .slideshow-container .slide h3 {
+            font-size: 20px; /* Kurangi ukuran font judul slide */
+            margin-bottom: 10px; /* Kurangi margin bawah judul */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .introduction .slideshow-container .slide p {
+            font-size: 14px; /* Kurangi ukuran font deskripsi */
+            line-height: 1.5; /* Rapatkan line height deskripsi */
+            margin-bottom: 15px; /* Kurangi margin bawah deskripsi */
+        }
+
+        /* Judul Bagian */
+        .section-title {
+            font-size: 40px; /* Ukuran font disesuaikan */
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+            position: relative;
+            padding-bottom: 15px;
             display: inline-block;
-            transition: background-color 0.6s ease;
+            width: 100%; /* Agar garis bawah bisa di tengah */
+            text-align: center;
         }
 
-        .active, .dot:hover {
-            background-color: #007bff; /* Aksen warna pada titik aktif/hover */
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px; /* Panjang garis bawah disesuaikan */
+            height: 4px;
+            background: linear-gradient(to right, #3498db, #2980b9);
+            border-radius: 2px;
         }
 
-        /* Efek Fade */
-        .fade {
-            animation-name: fade;
-            animation-duration: 0.7s;
+        /* Bagian Pimpinan Transport Planner */
+        .leaders-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Membuat 4 card berjejer responsif */
+            gap: 20px;
+            margin-bottom: 40px;
         }
 
-        @keyframes fade {
-            from {opacity: .4}
-            to {opacity: 1}
+        .leader-card {
+            background-color: #34495e; /* Warna latar belakang card pimpinan */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            border-top: 3px solid #3498db; /* Aksen garis biru */
+        }
+
+        .leader-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+        }
+
+        .leader-card img {
+            width: 120px; /* Ukuran gambar pimpinan */
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .leader-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .leader-card p {
+            font-size: 15px;
+            color: #bdc3c7;
+            margin-bottom: 15px;
+        }
+
+        .leader-card .chat-me {
+            display: inline-block;
+            background-color: #2ecc71; /* Warna hijau WhatsApp */
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease;
+        }
+
+        .leader-card .chat-me:hover {
+            background-color: #27ae60;
         }
 
         .main-content {
-            background-color: #fff;
+            background-color: #34495e; /* Latar belakang main content lebih gelap */
             border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 40px;
-            margin-bottom: 50px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            padding: 30px; /* Sedikit kurangi padding main content */
+            margin-bottom: 30px; /* Kurangi margin bawah main content */
             width: 100%;
             text-align: center;
+            color: #fff;
         }
 
         .main-content p {
@@ -232,35 +316,35 @@
         /* Footer */
         .footer {
             text-align: center;
-            padding: 35px 0;
-            font-size: 15px;
-            color: #777;
-            border-top: 1px solid #ddd;
+            padding: 25px 0; /* Sedikit kurangi padding footer */
+            font-size: 14px; /* Sedikit kurangi ukuran font footer */
+            color: #bdc3c7;
+            border-top: 1px solid #555;
             width: 100%;
-            background-color: #f9f9f9; /* Latar belakang footer lebih terang */
+            background-color: #2c3e50; /* Latar belakang footer sama dengan body */
         }
 
         .footer a {
-            color: #007bff; /* Warna biru tautan */
+            color: #3498db;
             text-decoration: none;
             transition: color 0.3s ease;
         }
 
         .footer a:hover {
             text-decoration: underline;
-            color: #0056b3;
+            color: #2980b9;
         }
 
         .whatsapp-link {
             display: inline-flex;
             align-items: center;
-            gap: 10px;
-            color: #25d366; /* Warna hijau WhatsApp */
+            gap: 8px; /* Sedikit kurangi gap ikon dan teks whatsapp link */
+            color: #2ecc71; /* Warna hijau WhatsApp lebih cerah */
             font-weight: 500;
         }
 
         .whatsapp-icon {
-            font-size: 18px;
+            font-size: 16px; /* Sedikit kurangi ukuran font ikon whatsapp */
         }
 
         /* Responsif untuk Navbar */
@@ -273,10 +357,18 @@
                 font-size: 18px;
             }
 
+            .image-slideshow-container {
+                max-height: 300px;
+            }
+
+            .image-slide img {
+                height: 300px;
+            }
+
             .navbar {
-                padding: 15px;
-                border-top: 3px solid #007bff; /* Pertahankan aksen di mobile */
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+                padding: 10px 15px;
+                border-top: 3px solid #3498db;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             }
 
             .nav-list {
@@ -285,31 +377,98 @@
             }
 
             .nav-item {
-                margin: 15px 0;
+                margin: 10px 0;
             }
 
             .nav-link {
                 display: block;
                 text-align: center;
+                font-size: 15px;
+                padding: 8px 15px;
             }
 
             .nav-link i {
-                color: #007bff; /* Pertahankan aksen ikon di mobile */
+                color: #3498db;
+                font-size: 15px;
             }
 
             .introduction {
-                padding: 30px;
-                border-left: 5px solid #007bff; /* Pertahankan aksen di mobile */
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+                padding: 20px;
+                border-left: 5px solid #3498db;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
             }
 
             .introduction h2 {
-                font-size: 28px;
+                font-size: 24px;
             }
 
             .introduction > p {
+                font-size: 15px;
+            }
+
+            .introduction .slideshow-container {
+                max-width: 95%; /* Lebih lebar di tampilan mobile */
+            }
+
+            .introduction .slideshow-container .slide h3 {
+                font-size: 18px;
+                max-width: 95%;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .leaders-container {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
+            .leader-card {
+                padding: 15px;
+                border-top: 2px solid #3498db; /* Aksen garis biru responsif */
+            }
+
+            ..leader-card img {
+                width: 80px;
+                height: 80px;
+                margin-bottom: 10px;
+            }
+
+            .leader-card h3 {
                 font-size: 16px;
             }
+
+            .leader-card p {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+
+            .leader-card .chat-me {
+                font-size: 14px;
+                padding: 8px 15px;
+            }
+        }
+
+        .slide-controls {
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .slide-controls button {
+            background: none;
+            border: none;
+            font-size: 20px;
+            color: #fff;
+            cursor: pointer;
+            margin: 0 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .slide-controls button:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
@@ -317,8 +476,14 @@
     <div class="container">
         <header class="header">
             <h1 class="header-title">Layanan Permintaan Pengiriman</h1>
-            <p class="header-subtitle">Informasi dan Akses Cepat</p>
+            <p class="header-subtitle">Ubur-ubur ikan lele, ada yang bisa dibantu le?</p>
         </header>
+
+        <div class="image-slideshow-container">
+            <div class="image-slide image-fade">
+                <img src="sampul.jpeg" alt="Sampul 1">
+            </div>
+        </div>
 
         <nav class="navbar">
             <ul class="nav-list">
@@ -330,6 +495,11 @@
                 </li>
                 <li class="nav-item">
                     <a href="trackingrt.html" class="nav-link"><i class="fa fa-map-marker-alt"></i> Lacak RT</a>
+                </li>
+                <li class="nav-item">
+                    <a href="plan.html" class="nav-link">
+                        <i class="fa fa-truck-moving"></i> Plan DO Customer
+                    </a>
                 </li>
                 <li class="nav-item">
                     <a href="https://script.google.com/macros/s/AKfycbxQg_u0Dd_S18WM3LC3xiHBMEWIWykgf5-tw4BEy0riFZfjujkSTB0fLpkHSCTgdp2O/exec" class="nav-link"><i class="fa fa-clipboard-check"></i> Konfirmasi DO Project</a>
@@ -364,6 +534,11 @@
                 </div>
 
                 <div class="slide fade">
+                    <h3><i class="fa fa-truck-moving"></i> Plan DO Customer</h3>
+                    <p>Untuk melihat DO anda dibawa oleh armada berapa dan dapat melihat kontak drivernya.</p>
+                </div>
+
+                <div class="slide fade">
                     <h3><i class="fa fa-clipboard-check"></i> Konfirmasi Delivery Order (DO) Project</h3>
                     <p>Mohon berikan konfirmasi terkait penerimaan Delivery Order (DO) project. Informasi Anda membantu kami dalam memastikan kelancaran logistik.</p>
                 </div>
@@ -384,7 +559,42 @@
                 <span class="dot" onclick="currentSlide(2)"></span>
                 <span class="dot" onclick="currentSlide(3)"></span>
                 <span class="dot" onclick="currentSlide(4)"></span>
-                <span class="dot" onclick="currentSlide(5)"></span><span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(5)"></span>
+                <span class="dot" onclick="currentSlide(6)"></span>
+                <span class="dot" onclick="currentSlide(7)"></span>
+            </div>
+
+            <div class="slide-controls">
+                <button class="prev" onclick="plusSlides(-1)"><i class="fa fa-chevron-left"></i></button>
+                <button class="next" onclick="plusSlides(1)"><i class="fa fa-chevron-right"></i></button>
+            </div>
+        </div>
+
+        <h2 class="section-title">Daftar Pimpinan Transport Planning</h2>
+        <div class="leaders-container">
+            <div class="leader-card">
+                <img src="galih.png" alt="Galih Rahmadana">
+                <h3>Galih Rahmadana</h3>
+                <p>Asisten Manager</p>
+                <a href="https://wa.me/YOUR_GALIH_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer" class="chat-me">Chat Me</a>
+            </div>
+            <div class="leader-card">
+                <img src="satiman.jpeg" alt="Satiman">
+                <h3>Satiman</h3>
+                <p>SPV HCI</p>
+                <a href="https://wa.me/YOUR_SATIMAN_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer" class="chat-me">Chat Me</a>
+            </div>
+            <div class="leader-card">
+                <img src="miftah.jpeg" alt="Miftah">
+                <h3>Miftah</h3>
+                <p>SPV AZKO</p>
+                <a href="https://wa.me/YOUR_MIFTAH_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer" class="chat-me">Chat Me</a>
+            </div>
+            <div class="leader-card">
+                <img src="deni.jpeg" alt="Denni">
+                <h3>Denni</h3>
+                <p>SPV KLS</p>
+                <a href="https://wa.me/YOUR_DENNI_WHATSAPP_NUMBER" target="_blank" rel="noopener noreferrer" class="chat-me">Chat Me</a>
             </div>
         </div>
 
@@ -404,27 +614,18 @@
     </div>
 
     <script>
-        let slideIndex = 0;
-        showSlides();
+        let slideIndex = 1; // Inisialisasi slideIndex menjadi 1
+        showSlides(slideIndex); // Tampilkan slide pertama saat halaman dimuat
 
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("slide");
-            let dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "block";
-            dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 5000); // Ganti slide setiap 5 detik
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
         }
 
         function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
             let i;
             let slides = document.getElementsByClassName("slide");
             let dots = document.getElementsByClassName("dot");
@@ -436,10 +637,25 @@
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
-            slides[n-1].style.display = "block";
-            dots[n-1].className += " active";
-            slideIndex = n; // Perbarui slideIndex saat navigasi manual
+            slides[slideIndex-1].style.display = "block";
+            dots[slideIndex-1].className += " active";
         }
+
+        let imageSlideIndex = 0;
+        showImageSlides(5000); // Tetap biarkan slideshow gambar auto geser
+
+        function showImageSlides(interval) {
+            let i;
+            let slides = document.getElementsByClassName("image-slide");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            imageSlideIndex++;
+            if (imageSlideIndex > slides.length) {imageSlideIndex = 1}
+            slides[imageSlideIndex-1].style.display = "block";
+            setTimeout(function(){ showImageSlides(interval); }, interval);
+        }
+        showImageSlides(5000); // Jalankan slideshow gambar saat halaman dimuat
     </script>
 </body>
 </html>
